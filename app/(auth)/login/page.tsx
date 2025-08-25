@@ -1,6 +1,11 @@
+import Loginform from "@/components/auth/Loginform";
+import Container from "@/components/layout/Container";
+
 const Login = () => {
     return (  
-        <>Login</>
+        <Container>
+            <Loginform/>
+        </Container>
     );
 }
  
