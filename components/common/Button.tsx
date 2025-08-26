@@ -15,10 +15,10 @@ interface ButtonProps {
 }
 
 const Button = (
-    {label,disabled,outlined,small,icon:Icon,className,type,onClick}: ButtonProps
+    {label,disabled,outlined,small,icon:Icon,className, type,onClick}: ButtonProps
 ) => {
     return ( <button
-    type={type}
+      type="button"
     disabled={disabled}
     onClick={onClick}
     className={cn("disabled:capacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80 transition w-auto border-slate-300 border-2 flex items-center gap-2 justify-center py-3 px-5 my-2 bg-slate-700 text-white dark:border-slate-700",

@@ -1,20 +1,20 @@
 "use client";
 
-import { Loginschema, LoginschemaType } from "@/schemas/Loginschema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Formfield from "../common/Formfield";
 import Button from "../common/Button";
 import Heading from "../common/Heading";
 import Socialauth from "./Socialauth";
+import { Registerschema, RegisterschemaType } from "@/schemas/Registerschema";
 
-const Loginform = () => {
+const Registerform = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginschemaType>({ resolver: zodResolver(Loginschema) });
-  const onSubmit: SubmitHandler<LoginschemaType> = (data) => {
+  } = useForm<RegisterschemaType>({ resolver: zodResolver(Registerschema) });
+  const onSubmit: SubmitHandler<RegisterschemaType> = (data) => {
     console.log("data>>>", data);
   };
 
@@ -23,7 +23,14 @@ const Loginform = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col max-w-[500px] mx-auto mt-8 gap-2"
     >
-      <Heading title="Login to your account" lg center />
+      <Heading title="create to your BlogMaking account" lg center />
+      <Formfield
+        id="name"
+        label="name"
+        register={register}
+        errors={errors}
+        placeholder="name"
+      />
       <Formfield
         id="email"
         label="email"
@@ -33,17 +40,25 @@ const Loginform = () => {
       />
       <Formfield
         id="password"
-          label="password"
+            label="password"
         type="password"
         register={register}
         errors={errors}
         placeholder="Enter your password"
       />
-      <Button type="submit" label="Login" />
+      <Formfield
+        id="confirmPassword"
+            label="confirmPassword"
+        type="password"
+        register={register}
+        errors={errors}
+        placeholder="confirmPassword"
+      />
+      <Button type="submit" label="Register" />
       <div className="flex justify-center my-2">Or</div>
       <Socialauth />
     </form>
   );
 };
 
-export default Loginform;
+export default Registerform;
